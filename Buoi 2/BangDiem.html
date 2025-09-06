@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Pattern</title>
+    <style>
+        /* Reset mặc định */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Toàn trang */
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Khung chính */
+        .container {
+            background: #fff;
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 350px;
+        }
+
+        /* Tiêu đề */
+        #kq {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Input + Select */
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #007bff;
+        }
+
+        /* Nút */
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        button.calculate {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button.reset {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Kết quả điểm */
+        #result {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-box">
+        <h2>BANG DIEM CUA EM</h2>
+
+        <div class="row">
+            <label for="text1">Semester1 </label>
+            <input type="text" id="text1">
+        </div>
+
+        <div class="row">
+            <label for="text2">Semester2 </label>
+            <input type="text" id="text2">
+        </div>
+
+        <div class="row">
+            <label for="select">Year:</label>
+            <select id="select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="result">Summarise:</label>
+            <input type="text" id="result" readonly>
+        </div>
+
+        <p id="kq">Bang Diem Cua Em</p>
+
+        <div class="buttons">
+            <button onclick="myFunction()">OK</button>
+            <button onclick="resetForm()">Cancel</button>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var a = parseFloat(document.getElementById("text1").value);
+            var b = parseFloat(document.getElementById("text2").value);
+            var value = parseInt(document.getElementById("select").value);
+            var k;
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Please enter valid numbers for both semesters!");
+                return;
+            }
+
+            switch (value) {
+                case 1:
+                    k = (a + (b * 2)) / 3;
+                    break;
+                case 2:
+                    k = ((a * 2) + (b * 3)) / 5;
+                    break;
+                case 3:
+                    k = ((a * 3) + (b * 4)) / 7;
+                    break;
+            }
+
+            k = parseFloat(k).toFixed(2);
+            document.getElementById('result').value = k;
+
+            let kq = document.getElementById('kq');
+            if (k >= 9) {
+                kq.innerHTML = "Xuất Sắc";
+                kq.style.color = "green";
+            } else if (k >= 8) {
+                kq.innerHTML = "Giỏi";
+                kq.style.color = "blue";
+            } else if (k >= 7) {
+                kq.innerHTML = "Khá";
+                kq.style.color = "orange";
+            } else if (k >= 5) {
+                kq.innerHTML = "Trung Bình";
+                kq.style.color = "brown";
+            } else {
+                kq.innerHTML = "Yếu";
+                kq.style.color = "red";
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('text1').value = "";
+            document.getElementById('text2').value = "";
+            document.getElementById('select').value = "1";
+            document.getElementById('result').value = "";
+            document.getElementById('kq').innerHTML = "Bang Diem Cua Em";
+            document.getElementById('kq').style.color = "black";
+        }
+    </script>
+</body>
+
+</html>
