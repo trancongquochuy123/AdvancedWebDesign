@@ -1,6 +1,6 @@
 // Hàm fetchProducts có callback
 function fetchProducts(callback) {
-  fetch("https://dummyjson.com/products")
+  fetch("https://68d39c7b214be68f8c667bc1.mockapi.io/api/v1/product")
     .then((res) => res.json())
     .then((data) => {
       callback(null, data); // gọi callback với dữ liệu
