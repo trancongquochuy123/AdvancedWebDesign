@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Chu vi & Diện tích HCN</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            margin: 0;
+        }
+
+        form {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            width: 320px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+        }
+
+        button {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .result,
+        .error {
+            width: 350px;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .result {
+            background: #e3fcec;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .error {
+            background: #fbeaea;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Tính Chu vi & Diện tích Hình chữ nhật</h2>
+    <form id="hcnForm">
+        <label for="dai">Chiều dài:</label>
+        <input type="number" id="dai" placeholder="Nhập chiều dài" required>
+
+        <label for="rong">Chiều rộng:</label>
+        <input type="number" id="rong" placeholder="Nhập chiều rộng" required>
+
+        <button type="submit">Tính</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        function tinhHCN(dai, rong) {
+            return new Promise((resolve, reject) => {
+                if (typeof dai !== "number" || typeof rong !== "number" || dai <= 0 || rong <= 0) {
+                    reject("❌ Lỗi: Chiều dài và chiều rộng phải là số dương!");
+                } else {
+                    const chuVi = 2 * (dai + rong);
+                    const dienTich = dai * rong;
+                    resolve({ chuVi, dienTich });
+                }
+            });
+        }
+
+        const form = document.getElementById("hcnForm");
+        const output = document.getElementById("output");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const dai = parseFloat(document.getElementById("dai").value);
+            const rong = parseFloat(document.getElementById("rong").value);
+
+            tinhHCN(dai, rong)
+                .then(result => {
+                    output.innerHTML = `
+            <div class="result">
+              ✅ Kết quả:<br>
+              Chu vi: <b>${result.chuVi}</b><br>
+              Diện tích: <b>${result.dienTich}</b>
+            </div>
+          `;
+                })
+                .catch(err => {
+                    output.innerHTML = `<div class="error">${err}</div>`;
+                })
+                .finally(() => {
+                    console.log("Hoàn tất Promise!");
+                });
+        });
+    </script>
+</body>
+
+</html>
