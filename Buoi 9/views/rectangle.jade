@@ -1,0 +1,15 @@
+extends layout
+block content
+    h1 Rectangle Calculator
+    form(action="/rectangle" method="post")
+        div
+            label(for="height") Height:
+            input(type="number" name="height" id="height" required)
+        div
+            label(for="width") Width:
+            input(type="number" name="width" id="width" required)
+        div
+            button(type="submit") Calculate Perimeter
+    if perimeter !== null
+        h2 Result
+        p The perimeter of the rectangle is #{perimeter}    
