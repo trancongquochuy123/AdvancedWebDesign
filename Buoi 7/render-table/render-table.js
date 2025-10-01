@@ -84,6 +84,7 @@ function renderTable(products) {
             <td>
               <button class="action-btn edit-btn" onclick="startEditProduct(${p.id})">Edit</button>
               <button class="action-btn delete-btn" onclick="deleteProduct(${p.id})">Delete</button>
+              <button class="action-btn" onclick="window.location.href='detail.html?id=${p.id}'">View Details</button>
             </td>
           </tr>
         `;
