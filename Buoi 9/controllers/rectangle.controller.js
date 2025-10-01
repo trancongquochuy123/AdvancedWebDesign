@@ -1,4 +1,4 @@
-const Rectangle = require('../models/rectangel.model');
+const Rectangle = require('../models/rectangle.model');
 
 // GET /calculator
 exports.index = (req, res) => {

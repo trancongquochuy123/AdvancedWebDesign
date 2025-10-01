@@ -1,0 +1,13 @@
+extends layout
+block content
+    h1 Square Calculator
+    form(action="/square" method="post")
+        div
+            label(for="side") Side:
+            input(type="number" name="side" id="side" required)
+        div
+            button(type="submit") Calculate 
+    if area !== null && perimeter !== null
+        h2 Result
+        p The area of the square is #{area}
+        p The perimeter of the square is #{perimeter}
