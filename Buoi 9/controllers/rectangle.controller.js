@@ -1,11 +1,11 @@
 const Rectangle = require('../models/rectangle.model');
 
-// GET /calculator
+// GET /rectangle
 exports.index = (req, res) => {
     res.render('rectangle', { perimeter: null });
 }
 
-// POST /calculator
+// POST /rectangle
 exports.calculatorPerimeter = (req, res) => {
     const width = parseFloat(req.body.width);
     const height = parseFloat(req.body.height);

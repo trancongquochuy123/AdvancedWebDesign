@@ -1,18 +1,36 @@
 const Square = require('../models/square.model');
 
-// GET /calculator
+// GET /square
 exports.index = (req, res) => {
     res.render('square', { area: null, perimeter: null });
 }
 
-// POST /calculator
-exports.calculatorPerimeter = (req, res) => {
-    const side = parseFloat(req.body.side);
-    const square = new Square(side);
-    const perimeter = square.getPerimeter();
-    const area = square.getArea();
+// POST /square
+exports.calculatorPerimeter = async (req, res) => {
+    try {
+        const side = parseFloat(req.body.side);
 
-    console.log(`Side: ${side}, Area: ${area}, Perimeter: ${perimeter}`);
+        // Tính toán trước
+        const perimeter = 4 * side;
+        const area = side * side;
 
-    res.render('square', { area: area, perimeter: perimeter });
-}
+        // Tạo document
+        const square = new Square({
+            sideLength: side,
+            perimeter: perimeter,
+            area: area
+        });
+
+        // Lưu vào DB
+        const savedSquare = await square.save();
+
+        // 👉 Log ra document vừa lưu trong MongoDB
+        console.log("✅ Square saved:", savedSquare);
+
+        // Render ra view
+        res.render('square', { area, perimeter });
+    } catch (error) {
+        console.error("❌ Error saving square:", error.message);
+        res.status(500).send("Error calculating square");
+    }
+};
