@@ -1,8 +1,17 @@
-extends layout
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Calculate Square Properties
+  body
+    h1 Calculate Square Perimeter and Area
+    form(action="/calculate" method="POST")
+      label(for="sideLength") Side Length:
+      input(type="number" name="sideLength" required)
+      br
+      button(type="submit") Calculate
 
-block content
-  h1= title
-  p Welcome to #{title}
-  div 
-    each val in a
-      p= val  
+    if perimeter !== null && area !== null
+      h2 Perimeter: #{perimeter}
+      h2 Area: #{area}
