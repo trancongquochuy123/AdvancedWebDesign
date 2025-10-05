@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var rectangleRoutes = require('./routes/rectangle.route');
 var squareRoutes = require('./routes/square.route');
+const productRoutes = require('./routes/product.route');  
 const { log } = require('console');
 
 var app = express();
@@ -33,6 +34,8 @@ app.use('/', squareRoutes);
 app.use('/users', usersRouter);
 app.use('/rectangle', rectangleRoutes);
 app.use('/square', squareRoutes);
+app.use('/api', productRoutes);  
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
