@@ -9,6 +9,18 @@ const productController = {
       return res.render('products', { products });  
     });  
   },  
+  showAddProductForm: (req, res) => {  
+    return res.render('addProduct');  
+  },  
+  addProduct: (req, res) => {  
+    const productData = req.body;  
+    Product.createProduct(productData, (err) => {  
+      if (err) {  
+        return res.status(500).json({ error: 'Failed to add product' });  
+      }  
+      return res.redirect('/api/products');  
+    });  
+  }  
 };  
 
 module.exports = productController;  

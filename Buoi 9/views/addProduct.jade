@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Add Product
+  body
+    h1 Add New Product
+    form(action="/api/products" method="POST")
+      label(for="name") Name:
+      br
+      input(type="text" id="name" name="name" required)
+      br
+      br
+
+      label(for="price") Price:
+      br
+      input(type="number" id="price" name="price" required)
+      br
+      br
+
+      label(for="description") Description:
+      br
+      input(type="text" id="description" name="description")
+      br
+      br
+
+      input(type="submit" value="Add Product")
+
+    br
+    a(href="/api/products") Back to Product List
