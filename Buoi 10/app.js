@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./db_banhang.sqlite');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
