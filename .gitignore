@@ -1,3 +1,21 @@
-/Advance/
-# or Advance/
-C:\Users\admin\OneDrive\Máy tính\webDesign\Buoi 9\node_modules
+# Bỏ toàn bộ node_modules
+/node_modules/
+/Buoi 9/node_modules/
+/Buoi 10/node_modules/
+/Buoi 10/public/source/
+/Buoi 11/node_modules/
+
+# Bỏ file môi trường
+.env
+/Buoi 9/.env
+/Buoi 10/.env
+/Buoi 11/.env
+
+# Bỏ thư mục IDE, hệ thống
+.vscode/
+.DS_Store
+Thumbs.db
+OneDrive*/
+
+# Bỏ các file tạm
+*.log
