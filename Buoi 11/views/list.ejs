@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách kết quả hình vuông</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h3 class="text-center text-primary mb-4">Danh sách kết quả đã tính</h3>
+    <table class="table table-striped table-hover shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Cạnh (cm)</th>
+          <th>Chu vi (cm)</th>
+          <th>Diện tích (cm²)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(item => { %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= item.canh %></td>
+            <td><%= item.chuvi %></td>
+            <td><%= item.dientich %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <div class="text-center mt-3">
+      <a href="/" class="btn btn-secondary">← Quay lại trang nhập</a>
+    </div>
+  </div>
+</body>
+</html>
