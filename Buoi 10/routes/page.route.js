@@ -15,5 +15,4 @@ router.get('/shopping_cart', pageController.shopping_cart);
 router.get('/pricing', pageController.pricing);  
 router.get('/product', pageController.product);  
 
-
 module.exports = router;  

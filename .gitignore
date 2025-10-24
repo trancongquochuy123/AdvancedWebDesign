@@ -4,12 +4,17 @@
 /Buoi 10/node_modules/
 /Buoi 10/public/source/
 /Buoi 11/node_modules/
+/Buoi 12/node_modules/
+/Buoi 12/views/
+/Demo 1/node_modules/
 
 # Bỏ file môi trường
 .env
 /Buoi 9/.env
 /Buoi 10/.env
 /Buoi 11/.env
+/Buoi 12/.env
+/Demo 1/.env
 
 # Bỏ thư mục IDE, hệ thống
 .vscode/
